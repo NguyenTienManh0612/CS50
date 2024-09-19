@@ -27,12 +27,13 @@ int main(int argc, char *argv[]) {
     FILE *img = NULL;
     char fileName[8]; // store name like 000.jpg, 001.jpg
 
+    //đọc mỗi lần 512 byte một từ file card.raw
     while(fread(buffer, 1, 512, card) == 512) { // 1 = size int byte of memory into which to read
         // Create JPEGs from the data with 3 first bytes are: 0xff 0xd8 0xff
         // the fourth byte has 4 first bits are 1110 or 0xe0 -> 0xef
         // output these by naming each ###.jpg, where ### is three-digit decimal number from 000 on up.
+        
         if(buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0) {
-
             if(img != NULL) fclose(img);
 
             //create a new jpeg file
