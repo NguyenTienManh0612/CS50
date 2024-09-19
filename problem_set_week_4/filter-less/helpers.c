@@ -1,5 +1,6 @@
 #include "helpers.h"
 #include <math.h>
+#include <stdlib.h>
 
 // Convert image to grayscale - black-white
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -85,6 +86,27 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     for(int i = 0; i < height; i++) {
         for(int j = 0; j < width; j++) {
             copy[i][j] = image[i][j];
+        }
+    }
+    for(int i = 0; i < height; i++) {
+        for(int j = 0; j < width; j++) {
+            int sumRed = 0, sumGreen = 0, sumBlue = 0;
+            int countRed = 0, countGreen = 0, countBlue = 0;
+            for(int x = i-1; x <= i+1; x++) {
+                for(int y = j-1; y <= j+1; y++) {
+                    if(x >= 0 && x < height && y >= 0 && y < width) {
+                        sumRed += copy[x][y].rgbtRed;
+                        sumGreen += copy[x][y].rgbtGreen;
+                        sumBlue += copy[x][y].rgbtBlue;
+                        countRed++;
+                        countGreen++;
+                        countBlue++;
+                    }
+                }
+            }
+            image[i][j].rgbtRed = round(sumRed * 1.0 / countRed);
+            image[i][j].rgbtGreen = round(sumGreen * 1.0 / countGreen);
+            image[i][j].rgbtBlue = round(sumBlue * 1.0 / countBlue);
         }
     }
     return;
