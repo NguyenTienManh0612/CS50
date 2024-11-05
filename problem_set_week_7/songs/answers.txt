@@ -1,0 +1,2 @@
+SELECT AVG(tempo) FROM songs;
+I will calculate this aura from type of songs and artist.
