@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+        A share of {{ getStockInfo.get("name") }} ({{ getStockInfo.get("symbol") }}) costs {{ getStockInfo.get("price") | usd}}
+{% endblock %}

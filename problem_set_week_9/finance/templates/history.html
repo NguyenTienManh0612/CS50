@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in table %}
+                <tr>
+                    <td class="text-start">{{purchase["symbol"].upper()}}</td>
+                    <td class="text-end">{{purchase["shares"]}}</td>
+                    <td class="text-end">{{purchase["price"] | usd}}</td>
+                    <td class="text-end">{{purchase["purchase_date"]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

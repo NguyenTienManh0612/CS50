@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+ul.nav-list {
+    list-style-type: none; /*remove the bullets*/
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    /*fix navigation bar at top*/
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+ul.nav-list li {
+    float: left
+}
+ul.nav-list li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* Change the link color to #969393 (black) on hover */
+ul.nav-list li a:hover {
+    background-color: #969393;
+}
+/*set active class to current link to let user know which page they are on*/
+ul.nav-list li.active {
+    background-color: #c47a0b;
+}
+
+.introduction {
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: white;
+    padding: 18.7% 0;
+    text-align: center;
+}
+.introduction h1 {
+    font-size: 2.5rem;
+}
+.introduction p {
+    font-size: 1.2rem;
+}
+.list-group-item {
+    font-weight: bold;
+}
+.footer {
+    background-color: #222;
+}
